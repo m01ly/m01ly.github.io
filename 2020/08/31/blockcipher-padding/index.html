@@ -17,13 +17,13 @@
 
 <meta name="description" content="转载自 https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;16e1cbc0b7a9  填充模式不仅仅适用于对称密码，非对称密码也会用到，比如RSA 分组密码中，需要将明文按指定大小进行分组，由于明文并非指定大小的整数倍，因此在明文的最后一个分组需要将其填充至加密算法所要求的分组大小后进行加密。 在解密时，按照同样的填充模式将填充的数据去除。 斜体表示 SunJCE 支持，非斜体为 BouncyC">
 <meta property="og:type" content="article">
-<meta property="og:title" content="分组密码的填充模式">
+<meta property="og:title" content="分组密码--填充模式">
 <meta property="og:url" content="https://m01ly.github.io/2020/08/31/blockcipher-padding/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="转载自 https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;16e1cbc0b7a9  填充模式不仅仅适用于对称密码，非对称密码也会用到，比如RSA 分组密码中，需要将明文按指定大小进行分组，由于明文并非指定大小的整数倍，因此在明文的最后一个分组需要将其填充至加密算法所要求的分组大小后进行加密。 在解密时，按照同样的填充模式将填充的数据去除。 斜体表示 SunJCE 支持，非斜体为 BouncyC">
 <meta property="og:locale">
 <meta property="article:published_time" content="2020-08-31T08:51:03.000Z">
-<meta property="article:modified_time" content="2020-09-01T02:49:02.130Z">
+<meta property="article:modified_time" content="2020-09-01T03:10:29.733Z">
 <meta property="article:author" content="m01ly">
 <meta name="twitter:card" content="summary">
 
@@ -59,7 +59,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>分组密码的填充模式 | Hexo</title>
+<title>分组密码--填充模式 | Hexo</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -214,7 +214,7 @@
                 
                 <section class="switch-part switch-part4">
                 
-                    <div id="js-aboutme">专注于前端</div>
+                    <div id="js-aboutme">专注于安全</div>
                 </section>
                 
             </div>
@@ -285,7 +285,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      分组密码的填充模式
+      分组密码--填充模式
     </h1>
   
 
@@ -362,12 +362,12 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2020/08/31/blockcipher-padding/">分组密码的填充模式</a></p>
+        <p><span>本文标题:</span><a href="/2020/08/31/blockcipher-padding/">分组密码--填充模式</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页"></a></p>
         <p><span>发布时间:</span>2020-08-31, 16:51:03</p>
-        <p><span>最后更新:</span>2020-09-01, 10:49:02</p>
+        <p><span>最后更新:</span>2020-09-01, 11:10:29</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/08/31/blockcipher-padding/" title="分组密码的填充模式">https://m01ly.github.io/2020/08/31/blockcipher-padding/</a>
+            <span>原始链接:</span><a class="post-url" href="/2020/08/31/blockcipher-padding/" title="分组密码--填充模式">https://m01ly.github.io/2020/08/31/blockcipher-padding/</a>
             <span class="copy-path" data-clipboard-text="原文: https://m01ly.github.io/2020/08/31/blockcipher-padding/　　作者: " title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -379,6 +379,12 @@
 
 
     <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2020/09/01/htps-attack-paddingoracle/">
+                    TLS 攻击之POODLE
+                </a>
+            </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
@@ -431,7 +437,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"分组密码的填充模式　| Hexo　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"分组密码--填充模式　| Hexo　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -473,7 +479,9 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2020/09/01/htps-attack-paddingoracle/" title="上一篇: TLS 攻击之POODLE">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
@@ -485,7 +493,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/08/31/blockcipher-padding/">分组密码的填充模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/31/blockcipher-operation-mode/">分组密码--工作模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/26/hexo-guide/">Hexo自建博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/26/htps-tools/">TLS安全检测小工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/26/htps-build/">搭建https网站</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/26/apple/">https/TLS1.2详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/25/kai/">kai</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/09/01/htps-attack-paddingoracle/">TLS 攻击之POODLE</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/31/blockcipher-padding/">分组密码--填充模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/31/blockcipher-operation-mode/">分组密码--工作模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/26/hexo-guide/">Hexo自建博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/26/htps-tools/">TLS安全检测小工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/26/htps-build/">搭建https网站</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/26/apple/">https/TLS1.2详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/25/kai/">kai</a></li></ul>
 
 
 
