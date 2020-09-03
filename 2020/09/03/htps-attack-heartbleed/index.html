@@ -15,17 +15,20 @@
 
 
 
-<meta name="description" content="Hexo自建博客0 引言https:&#x2F;&#x2F;www.dazhuanlan.com&#x2F;2019&#x2F;12&#x2F;18&#x2F;5df99e24d6d27&#x2F; https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;7f06d10f2e3e https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;db02d775aed0 1 检查配置文件 配置_config.yml里面的post_asset_folder:false这个选项设置为tr">
+<meta name="description" content="一 心脏滴血介绍 **心脏滴血漏洞(CVE-2014-0160) **是一个出现在加密程序库OpenSSL的安全漏洞，openssl是用于实现TLS协议的库。 受影响的版本： OpenSSL1.0.1、1.0.1a 、1.0.1b 、1.0.1c 、1.0.1d 、1.0.1e、1.0.1f、Beta 1 of OpenSSL 1.0.2等版本  影响范围：只要使用的是存在缺陷的OpenSSL实例">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo自建博客">
-<meta property="og:url" content="https://m01ly.github.io/2020/08/26/hexo-guide/index.html">
+<meta property="og:title" content="TLS攻击之心脏滴血">
+<meta property="og:url" content="https://m01ly.github.io/2020/09/03/htps-attack-heartbleed/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Hexo自建博客0 引言https:&#x2F;&#x2F;www.dazhuanlan.com&#x2F;2019&#x2F;12&#x2F;18&#x2F;5df99e24d6d27&#x2F; https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;7f06d10f2e3e https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;db02d775aed0 1 检查配置文件 配置_config.yml里面的post_asset_folder:false这个选项设置为tr">
+<meta property="og:description" content="一 心脏滴血介绍 **心脏滴血漏洞(CVE-2014-0160) **是一个出现在加密程序库OpenSSL的安全漏洞，openssl是用于实现TLS协议的库。 受影响的版本： OpenSSL1.0.1、1.0.1a 、1.0.1b 、1.0.1c 、1.0.1d 、1.0.1e、1.0.1f、Beta 1 of OpenSSL 1.0.2等版本  影响范围：只要使用的是存在缺陷的OpenSSL实例">
 <meta property="og:locale">
-<meta property="article:published_time" content="2020-08-26T09:33:07.000Z">
-<meta property="article:modified_time" content="2020-08-26T09:33:37.521Z">
+<meta property="og:image" content="https://m01ly.github.io/2020/09/03/htps-attack-heartbleed/1599116465905.png">
+<meta property="og:image" content="https://m01ly.github.io/2020/09/03/htps-attack-heartbleed/1599117066503.png">
+<meta property="article:published_time" content="2020-09-03T02:10:29.000Z">
+<meta property="article:modified_time" content="2020-09-03T07:37:43.091Z">
 <meta property="article:author" content="m01ly">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://m01ly.github.io/2020/09/03/htps-attack-heartbleed/1599116465905.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -59,7 +62,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Hexo自建博客 | Hexo</title>
+<title>TLS攻击之心脏滴血 | Hexo</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -266,11 +269,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-hexo-guide" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-htps-attack-heartbleed" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/08/26/hexo-guide/" class="article-date">
-      <time datetime="2020-08-26T09:33:07.000Z" itemprop="datePublished">2020-08-26</time>
+      <a href="/2020/09/03/htps-attack-heartbleed/" class="article-date">
+      <time datetime="2020-09-03T02:10:29.000Z" itemprop="datePublished">2020-09-03</time>
 </a>
 
 
@@ -285,7 +288,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hexo自建博客
+      TLS攻击之心脏滴血
     </h1>
   
 
@@ -302,24 +305,41 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="Hexo自建博客"><a href="#Hexo自建博客" class="headerlink" title="Hexo自建博客"></a>Hexo自建博客</h1><h2 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h2><p><a target="_blank" rel="noopener" href="https://www.dazhuanlan.com/2019/12/18/5df99e24d6d27/">https://www.dazhuanlan.com/2019/12/18/5df99e24d6d27/</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/7f06d10f2e3e">https://www.jianshu.com/p/7f06d10f2e3e</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/db02d775aed0">https://www.jianshu.com/p/db02d775aed0</a></p>
-<h2 id="1-检查配置文件"><a href="#1-检查配置文件" class="headerlink" title="1 检查配置文件"></a>1 检查配置文件</h2><blockquote>
-<p>配置_config.yml里面的post_asset_folder:false这个选项设置为true。Hexo 提供了一种更方便管理 Asset 的设定：post_asset_folder</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h2 id="2-安装图片插件"><a href="#2-安装图片插件" class="headerlink" title="2 安装图片插件"></a>2 安装图片插件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+        <h1 id="一-心脏滴血介绍"><a href="#一-心脏滴血介绍" class="headerlink" title="一 心脏滴血介绍"></a>一 心脏滴血介绍</h1><p> **心脏滴血漏洞(CVE-2014-0160) **是一个出现在加密程序库OpenSSL的安全漏洞，openssl是用于实现TLS协议的库。</p>
+<p><strong>受影响的版本：</strong> OpenSSL1.0.1、1.0.1a 、1.0.1b 、1.0.1c 、1.0.1d 、1.0.1e、1.0.1f、Beta 1 of OpenSSL 1.0.2等版本 </p>
+<p><strong>影响范围</strong>：只要使用的是存在缺陷的OpenSSL实例，无论是服务器还是客户端，都可能因此而受到攻击。 因为缺陷在于OpenSSL的实现，而不是SSL/TLS协议本身，所以除了OpenSSL之外的其他TLS实现方式，如GnuTLS、Mozilla的网络安全服务（NSS）和Windows平台的TLS实现都不受影响。</p>
+<p><strong>漏洞原理：</strong>在实现TLS的心跳扩展时没有对输入进行适当验证（缺少边界检查，因此漏洞的名称来源于“心跳”（heartbeat）。该程序错误属于缓冲区过读，即可以读取的数据比应该允许读取的还多 。</p>
+<h1 id="二-漏洞原理分析"><a href="#二-漏洞原理分析" class="headerlink" title="二 漏洞原理分析"></a>二 漏洞原理分析</h1><h2 id="2-1-心跳机制"><a href="#2-1-心跳机制" class="headerlink" title="2.1 心跳机制"></a>2.1 心跳机制</h2><p> TLS / SSL协议的一个重要组成部分被称为“心跳”。从本质上讲，<strong>心跳就是两台电脑互相通信从而让对方知道它们仍然相连，即使用户没有下载或上传任何东西。</strong></p>
+<p><strong>（1） 正常心跳检测</strong></p>
+<p>每过一段时间，浏览器会发送一个加密的数据到服务器端，这被称为心跳请求，至关重要的是，心跳请求里包含自己的长度信息。例如下图中，</p>
+<p><strong>客户端：</strong>内容为abcdefghij,，自己的长度为10字节 。</p>
+<p><strong>服务器</strong>：收到消息时，会分配一个内存缓冲区（一个物理内存区域用以存储信息），该区域的存储空间和心跳请求信号里的长度一致，即10字节。接下来，它会存储请求信号的加密数据到内存缓冲区，然后读取数据并将其发送回你的浏览器，来证明连接仍然存在。</p>
+<p><img src="/2020/09/03/htps-attack-heartbleed/1599116465905.png" alt="1599116465905"></p>
+<p><strong>（2） 心脏滴血</strong></p>
+<p> 心脏出血漏洞的出现是因为，**OpenSSL的心跳功能缺少了一个至关重要的安全维护手段：计算机接受心跳请求时从不检查该请求和它声称的内容是否一致，及从不检查所请求的数据长度是否和声称的数据长度一致，导致响应方返回额外长度的数据，具体如下图所示：</p>
+<p><strong>客户端心跳请求：</strong>abcdefghij,，心跳长度为10字节 。</p>
+<p><strong>服务器端：</strong>接收心跳数据后，没有对心跳请求数据长度和声称 的10字节长度进行检查，直接分配200字节缓存区，存储心跳数据。返回数据时，从缓冲区读取200字节的数据返回给客户端。这时候缓冲区可能会存在密钥，用户名，密码等隐私信息（可想而知payload需要精心构造以读取有用的隐私信息，这里仅仅简单描述攻击原理）。</p>
+<p><img src="/2020/09/03/htps-attack-heartbleed/1599117066503.png" alt="1599117066503"></p>
+<h2 id="2-2-心脏出血错误代码"><a href="#2-2-心脏出血错误代码" class="headerlink" title="2.2 心脏出血错误代码"></a>2.2 心脏出血错误代码</h2><p>导致心脏出血漏洞的编程错误可以归于一行代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">memcpy(bp, pl, payload);</span><br></pre></td></tr></table></figure>
+
+<p>memcpy()是复制数据的命令。bp是被复制的数据的存储区域，pl是被复制的数据的来源，payload是被复制的数据长度。<strong>问题在于，该命令没有检验pl复制的数据是否和payload给予的长度相符。</strong></p>
+<h1 id="3-修复心脏滴血漏洞"><a href="#3-修复心脏滴血漏洞" class="headerlink" title="3 修复心脏滴血漏洞"></a>3 修复心脏滴血漏洞</h1><p>修补心脏出血漏洞的方式是更新最新的OpenSSL版本，你可以在官网上获取相关链接 <a target="_blank" rel="noopener" href="https://www.openssl.org/source/">https://www.openssl.org/source/</a> 。</p>
+<p>因为OpenSSL是开源的，以下是<strong>修复过的代码</strong>： 代码的第一部分的功能是确定心跳请求的大小不是0KB，不然可能会出错。第二部分用来检验心跳的长度是否和它声称的相符。 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">* Read type <span class="keyword">and</span> payload length first*/</span><br><span class="line">if (1 + 2 + 16 &gt; s-&gt;s3-&gt;relent)</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">/silently discard */</span><br><span class="line">hbtype = *p++;</span><br><span class="line">n2s(p, payload);</span><br><span class="line">if (1 + 2 + payload + 16 &gt; s-&gt;s3-&gt;rrec.length)</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">/ silently discard per RFC <span class="number">6520</span> sec. <span class="number">4</span> */</span><br><span class="line">pl = p;</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="3-使用"><a href="#3-使用" class="headerlink" title="3 使用"></a>3 使用</h2><p>官方指南 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/tag-plugins">https://hexo.io/zh-cn/docs/tag-plugins</a> </p>
-<p>yelee主题使用指南: <a target="_blank" rel="noopener" href="http://moxfive.xyz/yelee/">http://moxfive.xyz/yelee/</a> </p>
-<p> <a target="_blank" rel="noopener" href="https://blog.csdn.net/xjm850552586/article/details/84101345">https://blog.csdn.net/xjm850552586/article/details/84101345</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo server 本地服务器浏览</span><br><span class="line">hexo d 上传</span><br></pre></td></tr></table></figure>
+<h1 id="4-心脏滴血漏洞检测"><a href="#4-心脏滴血漏洞检测" class="headerlink" title="4  心脏滴血漏洞检测"></a>4  心脏滴血漏洞检测</h1><h2 id="4-1-nmap"><a href="#4-1-nmap" class="headerlink" title="4.1  nmap"></a>4.1  nmap</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nmap -p 443 --script ssl-heartbleed 66.175.219.225</span><br><span class="line">或者</span><br><span class="line">nmap -sV --script&#x3D;ssl-heartbleed 111.X.X.53 -p 443</span><br></pre></td></tr></table></figure>
 
-<p> <a href="https://m01ly.github.io/archives/">https://m01ly.github.io/archives/</a> </p>
-<h2 id="4-注意事项"><a href="#4-注意事项" class="headerlink" title="4 注意事项"></a>4 注意事项</h2><p>md文件命名最好英文</p>
+<p>其他检测TLS工具也可检测，具体见：</p>
+<h2 id="4-2-网上在线检测"><a href="#4-2-网上在线检测" class="headerlink" title="4.2 网上在线检测"></a>4.2 网上在线检测</h2><p> <a target="_blank" rel="noopener" href="http://possible.lv/tools/hb/">http://possible.lv/tools/hb/</a> </p>
+<p> <a target="_blank" rel="noopener" href="http://filippo.io/Heartbleed/">http://filippo.io/Heartbleed/</a> </p>
+<h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><p>1  <a target="_blank" rel="noopener" href="https://www.aqniu.com/news-views/28453.html">https://www.aqniu.com/news-views/28453.html</a>   通俗易懂</p>
+<p>2 <a target="_blank" rel="noopener" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0160">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0160</a>  漏洞详情</p>
+<p>3 <a target="_blank" rel="noopener" href="https://blog.csdn.net/yaofeiNO1/article/details/54428021">https://blog.csdn.net/yaofeiNO1/article/details/54428021</a>  可利用的payload</p>
+<p>4 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/KevinGeorge/p/8029947.html">https://www.cnblogs.com/KevinGeorge/p/8029947.html</a>   POC</p>
+<p>5<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%BF%83%E8%84%8F%E5%87%BA%E8%A1%80%E6%BC%8F%E6%B4%9E">https://zh.wikipedia.org/wiki/%E5%BF%83%E8%84%8F%E5%87%BA%E8%A1%80%E6%BC%8F%E6%B4%9E</a>  wiki</p>
 
       
     </div>
@@ -328,13 +348,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2020/08/26/hexo-guide/">Hexo自建博客</a></p>
+        <p><span>本文标题:</span><a href="/2020/09/03/htps-attack-heartbleed/">TLS攻击之心脏滴血</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页"></a></p>
-        <p><span>发布时间:</span>2020-08-26, 17:33:07</p>
-        <p><span>最后更新:</span>2020-08-26, 17:33:37</p>
+        <p><span>发布时间:</span>2020-09-03, 10:10:29</p>
+        <p><span>最后更新:</span>2020-09-03, 15:37:43</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/08/26/hexo-guide/" title="Hexo自建博客">https://m01ly.github.io/2020/08/26/hexo-guide/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://m01ly.github.io/2020/08/26/hexo-guide/　　作者: " title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/09/03/htps-attack-heartbleed/" title="TLS攻击之心脏滴血">https://m01ly.github.io/2020/09/03/htps-attack-heartbleed/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://m01ly.github.io/2020/09/03/htps-attack-heartbleed/　　作者: " title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -346,16 +366,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2020/08/31/blockcipher-operation-mode/">
-                    分组密码--工作模式
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2020/08/26/htps-tools/">
-                    TLS安全检测小工具
+                <a href="/2020/09/01/htps-attack-paddingoracle/">
+                    TLS 攻击之POODLE
                 </a>
             </div>
         
@@ -367,7 +381,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Hexo%E8%87%AA%E5%BB%BA%E5%8D%9A%E5%AE%A2"><span class="toc-number">1.</span> <span class="toc-text">Hexo自建博客</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0-%E5%BC%95%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">0 引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%A3%80%E6%9F%A5%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.2.</span> <span class="toc-text">1 检查配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85%E5%9B%BE%E7%89%87%E6%8F%92%E4%BB%B6"><span class="toc-number">1.3.</span> <span class="toc-text">2 安装图片插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8"><span class="toc-number">1.4.</span> <span class="toc-text">3 使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">1.5.</span> <span class="toc-text">4 注意事项</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80-%E5%BF%83%E8%84%8F%E6%BB%B4%E8%A1%80%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">一 心脏滴血介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C-%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">二 漏洞原理分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E5%BF%83%E8%B7%B3%E6%9C%BA%E5%88%B6"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 心跳机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E5%BF%83%E8%84%8F%E5%87%BA%E8%A1%80%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%81"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 心脏出血错误代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E4%BF%AE%E5%A4%8D%E5%BF%83%E8%84%8F%E6%BB%B4%E8%A1%80%E6%BC%8F%E6%B4%9E"><span class="toc-number">3.</span> <span class="toc-text">3 修复心脏滴血漏洞</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%BF%83%E8%84%8F%E6%BB%B4%E8%A1%80%E6%BC%8F%E6%B4%9E%E6%A3%80%E6%B5%8B"><span class="toc-number">4.</span> <span class="toc-text">4  心脏滴血漏洞检测</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-nmap"><span class="toc-number">4.1.</span> <span class="toc-text">4.1  nmap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E7%BD%91%E4%B8%8A%E5%9C%A8%E7%BA%BF%E6%A3%80%E6%B5%8B"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 网上在线检测</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%EF%BC%9A"><span class="toc-number">5.</span> <span class="toc-text">参考：</span></a></li></ol>
         
     </div>
     <style>
@@ -403,7 +417,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Hexo自建博客　| Hexo　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"TLS攻击之心脏滴血　| Hexo　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -422,8 +436,8 @@
     <div id="disqus_thread"></div>
     <script>
         var disqus_config = function(){
-            this.page.url = 'https://m01ly.github.io/2020/08/26/hexo-guide/';
-            this.page.identifier = '2020/08/26/hexo-guide/';
+            this.page.url = 'https://m01ly.github.io/2020/09/03/htps-attack-heartbleed/';
+            this.page.identifier = '2020/09/03/htps-attack-heartbleed/';
         };
         var loadComment = function(){
             var d = document, s = d.createElement('script');
@@ -445,15 +459,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2020/08/31/blockcipher-operation-mode/" title="上一篇: 分组密码--工作模式">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2020/08/26/htps-tools/" title="下一篇: TLS安全检测小工具">
+            <a href="/2020/09/01/htps-attack-paddingoracle/" title="下一篇: TLS 攻击之POODLE">
                 <i class="fa fa-angle-right"></i>
             </a>
         

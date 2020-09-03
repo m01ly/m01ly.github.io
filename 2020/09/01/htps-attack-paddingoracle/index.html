@@ -36,7 +36,7 @@
 <meta property="og:image" content="http://cdn.bewindoweb.com/uploadpic/865b1480ac514fd22f27de5b08825418.jpeg">
 <meta property="og:image" content="http://cdn.bewindoweb.com/uploadpic/be0160296022f639c6aa6c25b3917167.jpeg">
 <meta property="article:published_time" content="2020-09-01T03:20:23.000Z">
-<meta property="article:modified_time" content="2020-09-02T03:29:45.280Z">
+<meta property="article:modified_time" content="2020-09-02T09:05:05.977Z">
 <meta property="article:author" content="m01ly">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://m01ly.github.io/2020/09/01/htps-attack-paddingoracle/1598950607286.png">
@@ -471,6 +471,25 @@
 <p>同理，通过控制请求路径，例如GET /a、GET /aa，不断地把已经解密的Cookie字符挤出，把未知字符留在该块末尾，然后循环进行前述操作，即可得到完整的Cookie字段。</p>
 <h2 id="3-3-Padding验证和MAC验证返回结果不同的情况"><a href="#3-3-Padding验证和MAC验证返回结果不同的情况" class="headerlink" title="3.3 Padding验证和MAC验证返回结果不同的情况"></a><strong>3.3 Padding验证和MAC验证返回结果不同的情况</strong></h2><p>前面的操作都是建立在Padding验证和MAC验证返回结果不同的基础之上，如果返回结果相同，那么MAC会校验不过导致失去判断Padding验证成功的依据。此时攻击者需要利用响应时间的差异来进行判断。如果响应时间仍然相同，那么这种攻击就无效了。</p>
 <h2 id="3-4-POODLE中“降级”的体现"><a href="#3-4-POODLE中“降级”的体现" class="headerlink" title="3**.4 POODLE中“降级”的体现**"></a>3**.4 POODLE中“降级”的体现**</h2><p>POODLE只在SSLv3.0以下版本才容易攻击成功，TLS会检查填充字符，所以TLS构造的padding通过服务器验证概率极低，TLSv1.3以后则完全避免了该漏洞。2014年，TLS已经得到广泛应用，但不乏少数服务器、客户端（比如IE6）和中间网络设备仍然采用SSL协议。因此为了平滑过渡增加用户体验，TLS1.2、TLS1.1、TLS1.0协议实现都会向后兼容SSLv3.0协议，最终协商通信协议为服务端和客户端支持的最高版本协议。如果记录协议中采用的是RC4流加密或者CBC模式的块加密，那么攻击者就可以进行POODLE攻击。</p>
+<h1 id="4-解决方法"><a href="#4-解决方法" class="headerlink" title="4 解决方法"></a>4 解决方法</h1><p>禁用SSL 3.0协议(ssl version ssl3.0 disable)。</p>
+<h2 id="4-1-服务端禁用方法"><a href="#4-1-服务端禁用方法" class="headerlink" title="4.1 服务端禁用方法"></a>4.1 服务端禁用方法</h2><p><strong>（1）Apache 2.x:</strong><br>在mod_ssl配置文件中使用如下命令禁用SSLv2和SSLv3：<br>SSLProtocol All -SSLv2 -SSLv3<br>重启Apache</p>
+<p><strong>（2）Nginx:</strong><br>在配置文件中使用：<br>ssl_protocols TLSv1 TLSv1.1 TLSv1.2;<br>重启Nginx</p>
+<p><strong>（3）lighttpd：</strong><br>确认lighttpd为1.4.29及以上版本<br>在配置文件中使用<br>ssl.use-sslv3 = “disable”<br>重启lighttpd</p>
+<p><strong>（4）tomcat参考:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;tomcat.apache.org&#x2F;tomcat-6.0-doc&#x2F;ssl-howto.html</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://tomcat.apache.org/tomcat-7.0-doc/ssl-howto.html">https://tomcat.apache.org/tomcat-7.0-doc/ssl-howto.html</a></p>
+<p><strong>（5）IIS:</strong><br>查找如下注册表项：<br>HKey_Local_MachineSystemCurrentControlSetControlSecurityProviders SCHANNELProtocols<br>该注册表项通常包含以下子项：</p>
+<ul>
+<li>PCT 1.0</li>
+<li>SSL 2.0</li>
+<li>SSL 3.0</li>
+<li>TLS 1.0<br>每个注册表项都保留适用于该项的协议相关信息。可以在服务器上禁用这些协议中的任一种。为此，</li>
+</ul>
+<p>请在协议SSL 3.0的服务器子项中创建一个新的DWORD值。名称为Enabled,将DWORD值设置为“00 00 00 00”。 重启IIS服务</p>
+<h2 id="4-2-浏览器禁用方法"><a href="#4-2-浏览器禁用方法" class="headerlink" title="4.2 浏览器禁用方法"></a>4.2 浏览器禁用方法</h2><p><strong>（1）IE:</strong><br>“工具” -&gt; “Internet 选项” -&gt; “高级” ，取消”使用 SSL 3.0”的复选框。<br><strong>（2）Chrome:</strong></p>
+<p>复制一个平时打开 Chrome 浏览器的快捷方式，在新的快捷方式上右键点击，进入属性，<br>在”目标”后面的空格中字段的末尾输入以下命令 –ssl-version-min=tls1<br><strong>（3）FireFox:</strong></p>
+<p>在地址栏输入”about:config”，然后将 security.tls.version.min 调至 1。</p>
 <h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>1、<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ad8bdd87e131">《Web狗要懂的Padding Oracle攻击》</a>：很详细</p>
 <p>2、<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/1851f778e579">《Padding Oracle》</a></p>
 <p>3、[《百度百科：Padding Oracle》](<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Padding">https://baike.baidu.com/item/Padding</a> Oracle/3530091?fr=aladdin)</p>
@@ -481,6 +500,7 @@
 <p>8、<a target="_blank" rel="noopener" href="https://blog.csdn.net/howeverpf/article/details/40350113">《漏洞分析—SSLv3降级加密协议Padding Oracle攻击（POODLE）技术分析》</a>：例子详细</p>
 <p>9、<a target="_blank" rel="noopener" href="http://www.bubuko.com/infodetail-413104.html">《SSLv3 POODLE 攻击分析》</a>：最正确的一篇分析</p>
 <p>10、<a target="_blank" rel="noopener" href="https://www.openssl.org/~bodo/ssl-poodle.pdf">《This POODLE Bites: Exploiting The SSL 3.0 Fallback》</a>：Google研究报告原文</p>
+<p>11  <a target="_blank" rel="noopener" href="https://www.onebug.org/%E7%BB%BF%E7%9B%9F%E6%BC%8F%E6%B4%9E%E5%BA%93/87280.html">https://www.onebug.org/%E7%BB%BF%E7%9B%9F%E6%BC%8F%E6%B4%9E%E5%BA%93/87280.html</a> ：预防办法</p>
 
       
     </div>
@@ -492,7 +512,7 @@
         <p><span>本文标题:</span><a href="/2020/09/01/htps-attack-paddingoracle/">TLS 攻击之POODLE</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页"></a></p>
         <p><span>发布时间:</span>2020-09-01, 11:20:23</p>
-        <p><span>最后更新:</span>2020-09-02, 11:29:45</p>
+        <p><span>最后更新:</span>2020-09-02, 17:05:05</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2020/09/01/htps-attack-paddingoracle/" title="TLS 攻击之POODLE">https://m01ly.github.io/2020/09/01/htps-attack-paddingoracle/</a>
             <span class="copy-path" data-clipboard-text="原文: https://m01ly.github.io/2020/09/01/htps-attack-paddingoracle/　　作者: " title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -506,6 +526,12 @@
 
 
     <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2020/09/03/htps-attack-heartbleed/">
+                    TLS攻击之心脏滴血
+                </a>
+            </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
@@ -522,7 +548,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81-POODLE%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">一、 POODLE简介</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Padding-Oracle-%E6%94%BB%E5%87%BB%E5%8E%9F%E7%90%86"><span class="toc-number"></span> <span class="toc-text">二、Padding Oracle 攻击原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-CBC%E5%AF%86%E7%A0%81%E5%9D%97%E9%93%BE%E6%8E%A5%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E5%8A%A0%E5%AF%86"><span class="toc-number">1.</span> <span class="toc-text">2.1 CBC密码块链接模式——加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-CBC%E5%AF%86%E7%A0%81%E5%9D%97%E9%93%BE%E6%8E%A5%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E8%A7%A3%E5%AF%86"><span class="toc-number">2.</span> <span class="toc-text">2.2 CBC密码块链接模式——解密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-Padding-Oracle-%E6%94%BB%E5%87%BB"><span class="toc-number">3.</span> <span class="toc-text">2.3 Padding Oracle 攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-%E6%94%BB%E5%87%BB%E5%8E%9F%E7%90%86"><span class="toc-number">3.0.1.</span> <span class="toc-text">2.3.1 攻击原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-%E6%94%BB%E5%87%BB%E8%BF%87%E7%A8%8B"><span class="toc-number">3.0.2.</span> <span class="toc-text">2.3.2 攻击过程</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81POODLE%E6%94%BB%E5%87%BB%E5%8E%9F%E7%90%86"><span class="toc-number"></span> <span class="toc-text">三、POODLE攻击原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-SSLv3-0%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">3.1 SSLv3.0存在的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E5%88%A9%E7%94%A8SSL%E6%BC%8F%E6%B4%9E%E8%BF%9B%E8%A1%8CPOODLE%E6%94%BB%E5%87%BB"><span class="toc-number">2.</span> <span class="toc-text">3.2 利用SSL漏洞进行POODLE攻击</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-Padding%E9%AA%8C%E8%AF%81%E5%92%8CMAC%E9%AA%8C%E8%AF%81%E8%BF%94%E5%9B%9E%E7%BB%93%E6%9E%9C%E4%B8%8D%E5%90%8C%E7%9A%84%E6%83%85%E5%86%B5"><span class="toc-number">3.</span> <span class="toc-text">3.3 Padding验证和MAC验证返回结果不同的情况</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-POODLE%E4%B8%AD%E2%80%9C%E9%99%8D%E7%BA%A7%E2%80%9D%E7%9A%84%E4%BD%93%E7%8E%B0"><span class="toc-number">4.</span> <span class="toc-text">3**.4 POODLE中“降级”的体现**</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number"></span> <span class="toc-text">参考资料</span></a>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81-POODLE%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">一、 POODLE简介</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Padding-Oracle-%E6%94%BB%E5%87%BB%E5%8E%9F%E7%90%86"><span class="toc-number"></span> <span class="toc-text">二、Padding Oracle 攻击原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-CBC%E5%AF%86%E7%A0%81%E5%9D%97%E9%93%BE%E6%8E%A5%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E5%8A%A0%E5%AF%86"><span class="toc-number">1.</span> <span class="toc-text">2.1 CBC密码块链接模式——加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-CBC%E5%AF%86%E7%A0%81%E5%9D%97%E9%93%BE%E6%8E%A5%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E8%A7%A3%E5%AF%86"><span class="toc-number">2.</span> <span class="toc-text">2.2 CBC密码块链接模式——解密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-Padding-Oracle-%E6%94%BB%E5%87%BB"><span class="toc-number">3.</span> <span class="toc-text">2.3 Padding Oracle 攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-%E6%94%BB%E5%87%BB%E5%8E%9F%E7%90%86"><span class="toc-number">3.0.1.</span> <span class="toc-text">2.3.1 攻击原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-%E6%94%BB%E5%87%BB%E8%BF%87%E7%A8%8B"><span class="toc-number">3.0.2.</span> <span class="toc-text">2.3.2 攻击过程</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81POODLE%E6%94%BB%E5%87%BB%E5%8E%9F%E7%90%86"><span class="toc-number"></span> <span class="toc-text">三、POODLE攻击原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-SSLv3-0%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">3.1 SSLv3.0存在的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E5%88%A9%E7%94%A8SSL%E6%BC%8F%E6%B4%9E%E8%BF%9B%E8%A1%8CPOODLE%E6%94%BB%E5%87%BB"><span class="toc-number">2.</span> <span class="toc-text">3.2 利用SSL漏洞进行POODLE攻击</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-Padding%E9%AA%8C%E8%AF%81%E5%92%8CMAC%E9%AA%8C%E8%AF%81%E8%BF%94%E5%9B%9E%E7%BB%93%E6%9E%9C%E4%B8%8D%E5%90%8C%E7%9A%84%E6%83%85%E5%86%B5"><span class="toc-number">3.</span> <span class="toc-text">3.3 Padding验证和MAC验证返回结果不同的情况</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-POODLE%E4%B8%AD%E2%80%9C%E9%99%8D%E7%BA%A7%E2%80%9D%E7%9A%84%E4%BD%93%E7%8E%B0"><span class="toc-number">4.</span> <span class="toc-text">3**.4 POODLE中“降级”的体现**</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number"></span> <span class="toc-text">4 解决方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%A6%81%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">4.1 服务端禁用方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%A6%81%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">4.2 浏览器禁用方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number"></span> <span class="toc-text">参考资料</span></a>
         
     </div>
     <style>
@@ -600,7 +626,9 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2020/09/03/htps-attack-heartbleed/" title="上一篇: TLS攻击之心脏滴血">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
@@ -612,7 +640,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/09/01/htps-attack-paddingoracle/">TLS 攻击之POODLE</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/31/blockcipher-padding/">分组密码--填充模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/31/blockcipher-operation-mode/">分组密码--工作模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/26/hexo-guide/">Hexo自建博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/26/htps-tools/">TLS安全检测小工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/26/htps-build/">搭建https网站</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/26/apple/">https/TLS1.2详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/25/kai/">kai</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/09/03/htps-attack-heartbleed/">TLS攻击之心脏滴血</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/01/htps-attack-paddingoracle/">TLS 攻击之POODLE</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/31/blockcipher-padding/">分组密码--填充模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/31/blockcipher-operation-mode/">分组密码--工作模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/26/hexo-guide/">Hexo自建博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/26/htps-tools/">TLS安全检测小工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/26/htps-build/">搭建https网站</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/26/apple/">https/TLS1.2详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/25/kai/">kai</a></li></ul>
 
 
 
