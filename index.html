@@ -325,7 +325,7 @@
 
 <h1 id="4-心脏滴血漏洞检测"><a href="#4-心脏滴血漏洞检测" class="headerlink" title="4  心脏滴血漏洞检测"></a>4  心脏滴血漏洞检测</h1><h2 id="4-1-nmap"><a href="#4-1-nmap" class="headerlink" title="4.1  nmap"></a>4.1  nmap</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nmap -p 443 --script ssl-heartbleed 66.175.219.225</span><br><span class="line">或者</span><br><span class="line">nmap -sV --script=ssl-heartbleed 111.X.X.53 -p 443</span><br></pre></td></tr></table></figure>
 
-<p>其他检测TLS工具也可检测，具体见： <a href="https://m01ly.github.io/2020/08/26/htps-tools/">TLS安全检测小工具 </a></p>
+<p>其他检测TLS工具也可检测，具体见：<a href="https://m01ly.github.io/2020/08/26/htps-tools/">TLS检测小工具</a> </p>
 <h2 id="4-2-网上在线检测"><a href="#4-2-网上在线检测" class="headerlink" title="4.2 网上在线检测"></a>4.2 网上在线检测</h2><p> <a target="_blank" rel="noopener" href="http://possible.lv/tools/hb/">http://possible.lv/tools/hb/</a> </p>
 <p> <a target="_blank" rel="noopener" href="http://filippo.io/Heartbleed/">http://filippo.io/Heartbleed/</a> </p>
 <h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><p>1  <a target="_blank" rel="noopener" href="https://www.aqniu.com/news-views/28453.html">https://www.aqniu.com/news-views/28453.html</a>   通俗易懂</p>
