@@ -15,11 +15,15 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://m01ly.github.io/archives/2020/09/index.html">
+<meta name="description" content="TLS 安全配置DHparamDiffie-Hellman group smaller than 2048 bits 漏洞漏洞描述：  Diffie-Hellman group smaller than 2048 bits：  TLS服务器使用Diffie-Hellman组，质数模长度小于2048位。目前的估计是，一个学术团队可以打破768位素数，而一个国家级团队可以打破1024位素数。  TLS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="m01ly-wiki">
+<meta property="og:url" content="https://m01ly.github.io/2020/09/03/m01ly-wiki/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="TLS 安全配置DHparamDiffie-Hellman group smaller than 2048 bits 漏洞漏洞描述：  Diffie-Hellman group smaller than 2048 bits：  TLS服务器使用Diffie-Hellman组，质数模长度小于2048位。目前的估计是，一个学术团队可以打破768位素数，而一个国家级团队可以打破1024位素数。  TLS">
 <meta property="og:locale">
+<meta property="article:published_time" content="2020-09-03T09:54:02.000Z">
+<meta property="article:modified_time" content="2020-09-03T10:27:31.478Z">
 <meta property="article:author" content="m01ly">
 <meta name="twitter:card" content="summary">
 
@@ -55,7 +59,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Archives: 2020/9 | Hexo</title>
+<title>m01ly-wiki | Hexo</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -65,8 +69,8 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
-        isArchive: true,
+        isPost: true,
+        isArchive: false,
         isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
@@ -262,110 +266,210 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-m01ly-wiki" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2020/09/03/m01ly-wiki/" class="article-date">
+      <time datetime="2020-09-03T09:54:02.000Z" itemprop="datePublished">2020-09-03</time>
+</a>
+
+
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      m01ly-wiki
+    </h1>
+  
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2020/09/03/m01ly-wiki/" class="archive-article-date">
-      <time datetime="2020-09-03T09:54:02.000Z" itemprop="datePublished">09-03</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/09/03/m01ly-wiki/">m01ly-wiki</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
+    <div class="article-entry" itemprop="articleBody">
+      
           
+        <h1 id="TLS-安全配置"><a href="#TLS-安全配置" class="headerlink" title="TLS 安全配置"></a>TLS 安全配置</h1><h2 id="DHparam"><a href="#DHparam" class="headerlink" title="DHparam"></a>DHparam</h2><h3 id="Diffie-Hellman-group-smaller-than-2048-bits-漏洞"><a href="#Diffie-Hellman-group-smaller-than-2048-bits-漏洞" class="headerlink" title="Diffie-Hellman group smaller than 2048 bits 漏洞"></a>Diffie-Hellman group smaller than 2048 bits 漏洞</h3><p><strong>漏洞描述：</strong></p>
+<ol>
+<li>Diffie-Hellman group smaller than 2048 bits：</li>
+</ol>
+<p>TLS服务器使用Diffie-Hellman组，质数模长度小于2048位。目前的估计是，一个学术团队可以打破768位素数，而一个国家级团队可以打破1024位素数。</p>
+<ol start="2">
+<li>TLS/SSL Server Is Using Commonly Used Prime Numbers </li>
+</ol>
+<p>在Diffie-Hellman密钥交换期间，服务器使用一个公共素数或默认质数作为参数。这使得安全会话容易受到预计算攻击。攻击者可以花费大量时间为特定质数生成查找/彩虹表。然后，可以使用此查找表获取握手的共享机密并解密会话。</p>
+<p><strong>漏洞分析：</strong></p>
+<p>漏洞1，只需要重新生成2048位DH参数即可。</p>
+<p>漏洞2，因为用了已知的素数，会导致爆破后破解出密钥，因此只需要升级到2048位参数，在2048位DH组下进行这种攻击的可行性被评估为不确定且未经证实。</p>
+<p><strong>漏洞解决方法：</strong>重新生成2048位dhparams。nginx配置如下，其他容器详见<a target="_blank" rel="noopener" href="https://weakdh.org/sysadmin.html">https://weakdh.org/sysadmin.html</a> 。</p>
+<p>1 利用openssl生成2048bit dhparams.pem命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl dhparam -out dhparams.pem 2048</span><br></pre></td></tr></table></figure>
 
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<p>dh协议文件生成速度随长度增长而急剧增长，使用随机数种子可以加快生成速度，如下所示</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl dhparam -rand rand.seed -out dhparams.pem 2048</span><br></pre></td></tr></table></figure>
+
+<p>2 nginx配置 （nginx.conf文件）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssl_dhparam dhparams.pem的路径; </span><br></pre></td></tr></table></figure>
+
+<p><strong>参考：</strong></p>
+<p><a target="_blank" rel="noopener" href="https://weakdh.org/sysadmin.html">https://weakdh.org/sysadmin.html</a>   官方TLS部署Diffie-Hellman指南，包括apache,iis环境下的配置</p>
+<p><a target="_blank" rel="noopener" href="https://gist.github.com/fotock/9cf9afc2fd0f813828992ebc4fdaad6f">https://gist.github.com/fotock/9cf9afc2fd0f813828992ebc4fdaad6f</a>  TLS 的nginx安全配置</p>
+<p><a target="_blank" rel="noopener" href="https://kb.fortinet.com/kb/documentLink.do?externalID=FD43985">https://kb.fortinet.com/kb/documentLink.do?externalID=FD43985</a>   <a target="_blank" rel="noopener" href="https://www.rapid7.com/db/vulnerabilities/tls-dh-primes">https://www.rapid7.com/db/vulnerabilities/tls-dh-primes</a> 解决方法</p>
+<p><a target="_blank" rel="noopener" href="https://www.openssl.org/docs/man1.1.0/man1/dhparam.html">https://www.openssl.org/docs/man1.1.0/man1/dhparam.html</a>  openssl生成 dhparam具体用法</p>
+<p><a target="_blank" rel="noopener" href="https://weakdh.org/logjam.html">https://weakdh.org/logjam.html</a>   <a target="_blank" rel="noopener" href="https://weakdh.org/">https://weakdh.org/</a> 相关DH的攻击</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/f-ck-need-u/p/7103791.html">https://www.cnblogs.com/f-ck-need-u/p/7103791.html</a>  加快生成速度</p>
+
+      
+    </div>
+    
   </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2020/09/03/m01ly-wiki/">m01ly-wiki</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页"></a></p>
+        <p><span>发布时间:</span>2020-09-03, 17:54:02</p>
+        <p><span>最后更新:</span>2020-09-03, 18:27:31</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2020/09/03/m01ly-wiki/" title="m01ly-wiki">https://m01ly.github.io/2020/09/03/m01ly-wiki/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://m01ly.github.io/2020/09/03/m01ly-wiki/　　作者: " title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2020/09/03/htps-attack-heartbleed/">
+                    TLS攻击之心脏滴血
+                </a>
+            </div>
+        
+    </nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2020/09/03/htps-attack-heartbleed/" class="archive-article-date">
-      <time datetime="2020-09-03T02:10:29.000Z" itemprop="datePublished">09-03</time>
-</a>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TLS-%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE"><span class="toc-number">1.</span> <span class="toc-text">TLS 安全配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DHparam"><span class="toc-number">1.1.</span> <span class="toc-text">DHparam</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Diffie-Hellman-group-smaller-than-2048-bits-%E6%BC%8F%E6%B4%9E"><span class="toc-number">1.1.1.</span> <span class="toc-text">Diffie-Hellman group smaller than 2048 bits 漏洞</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
 
 
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
         </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/09/03/htps-attack-heartbleed/">TLS攻击之心脏滴血</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"m01ly-wiki　| Hexo　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
     
+
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2020/09/01/htps-attack-paddingoracle/" class="archive-article-date">
-      <time datetime="2020-09-01T03:20:23.000Z" itemprop="datePublished">09-01</time>
-</a>
+</div>
 
 
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/09/01/htps-attack-paddingoracle/">TLS 攻击之POODLE</a>
-    </h1>
-  
 
-        <div class="article-info info-on-archive">
-          
 
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+
+
+
+    
+        <section id="comments">
+    <style> aside.comment-bar { margin: auto 30px; }</style>
+    <div id="disqus_thread"></div>
+    <script>
+        var disqus_config = function(){
+            this.page.url = 'https://m01ly.github.io/2020/09/03/m01ly-wiki/';
+            this.page.identifier = '2020/09/03/m01ly-wiki/';
+        };
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = '//m01ly.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+</section>
+
 
     
 
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2020/09/03/htps-attack-heartbleed/" title="下一篇: TLS攻击之心脏滴血">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/09/03/m01ly-wiki/">m01ly-wiki</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/03/htps-attack-heartbleed/">TLS攻击之心脏滴血</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/01/htps-attack-paddingoracle/">TLS 攻击之POODLE</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/31/blockcipher-padding/">分组密码--填充模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/31/blockcipher-operation-mode/">分组密码--工作模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/26/hexo-guide/">Hexo自建博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/26/htps-tools/">TLS安全检测小工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/26/htps-build/">搭建https网站</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/26/apple/">https/TLS1.2详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/25/kai/">kai</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">

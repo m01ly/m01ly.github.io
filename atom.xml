@@ -6,7 +6,7 @@
   <link href="https://m01ly.github.io/atom.xml" rel="self"/>
   
   <link href="https://m01ly.github.io/"/>
-  <updated>2020-09-03T07:44:00.550Z</updated>
+  <updated>2020-09-03T10:27:31.478Z</updated>
   <id>https://m01ly.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>m01ly-wiki</title>
+    <link href="https://m01ly.github.io/2020/09/03/m01ly-wiki/"/>
+    <id>https://m01ly.github.io/2020/09/03/m01ly-wiki/</id>
+    <published>2020-09-03T09:54:02.000Z</published>
+    <updated>2020-09-03T10:27:31.478Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="TLS-安全配置"><a href="#TLS-安全配置" class="headerlink" title="TLS 安全配置"></a>TLS 安全配置</h1><h2 id="DHparam"><a href="#DHparam" class="headerlink" title="DHparam"></a>DHparam</h2><h3 id="Diffie-Hellman-group-smaller-than-2048-bits-漏洞"><a href="#Diffie-Hellman-group-smaller-than-2048-bits-漏洞" class="headerlink" title="Diffie-Hellman group smaller than 2048 bits 漏洞"></a>Diffie-Hellman group smaller than 2048 bits 漏洞</h3><p><strong>漏洞描述：</strong></p><ol><li>Diffie-Hellman group smaller than 2048 bits：</li></ol><p>TLS服务器使用Diffie-Hellman组，质数模长度小于2048位。目前的估计是，一个学术团队可以打破768位素数，而一个国家级团队可以打破1024位素数。</p><ol start="2"><li>TLS/SSL Server Is Using Commonly Used Prime Numbers </li></ol><p>在Diffie-Hellman密钥交换期间，服务器使用一个公共素数或默认质数作为参数。这使得安全会话容易受到预计算攻击。攻击者可以花费大量时间为特定质数生成查找/彩虹表。然后，可以使用此查找表获取握手的共享机密并解密会话。</p><p><strong>漏洞分析：</strong></p><p>漏洞1，只需要重新生成2048位DH参数即可。</p><p>漏洞2，因为用了已知的素数，会导致爆破后破解出密钥，因此只需要升级到2048位参数，在2048位DH组下进行这种攻击的可行性被评估为不确定且未经证实。</p><p><strong>漏洞解决方法：</strong>重新生成2048位dhparams。nginx配置如下，其他容器详见<a href="https://weakdh.org/sysadmin.html">https://weakdh.org/sysadmin.html</a> 。</p><p>1 利用openssl生成2048bit dhparams.pem命令如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl dhparam -out dhparams.pem 2048</span><br></pre></td></tr></table></figure><p>dh协议文件生成速度随长度增长而急剧增长，使用随机数种子可以加快生成速度，如下所示</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl dhparam -rand rand.seed -out dhparams.pem 2048</span><br></pre></td></tr></table></figure><p>2 nginx配置 （nginx.conf文件）：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssl_dhparam dhparams.pem的路径; </span><br></pre></td></tr></table></figure><p><strong>参考：</strong></p><p><a href="https://weakdh.org/sysadmin.html">https://weakdh.org/sysadmin.html</a>   官方TLS部署Diffie-Hellman指南，包括apache,iis环境下的配置</p><p><a href="https://gist.github.com/fotock/9cf9afc2fd0f813828992ebc4fdaad6f">https://gist.github.com/fotock/9cf9afc2fd0f813828992ebc4fdaad6f</a>  TLS 的nginx安全配置</p><p><a href="https://kb.fortinet.com/kb/documentLink.do?externalID=FD43985">https://kb.fortinet.com/kb/documentLink.do?externalID=FD43985</a>   <a href="https://www.rapid7.com/db/vulnerabilities/tls-dh-primes">https://www.rapid7.com/db/vulnerabilities/tls-dh-primes</a> 解决方法</p><p><a href="https://www.openssl.org/docs/man1.1.0/man1/dhparam.html">https://www.openssl.org/docs/man1.1.0/man1/dhparam.html</a>  openssl生成 dhparam具体用法</p><p><a href="https://weakdh.org/logjam.html">https://weakdh.org/logjam.html</a>   <a href="https://weakdh.org/">https://weakdh.org/</a> 相关DH的攻击</p><p><a href="https://www.cnblogs.com/f-ck-need-u/p/7103791.html">https://www.cnblogs.com/f-ck-need-u/p/7103791.html</a>  加快生成速度</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;TLS-安全配置&quot;&gt;&lt;a href=&quot;#TLS-安全配置&quot; class=&quot;headerlink&quot; title=&quot;TLS 安全配置&quot;&gt;&lt;/a&gt;TLS 安全配置&lt;/h1&gt;&lt;h2 id=&quot;DHparam&quot;&gt;&lt;a href=&quot;#DHparam&quot; class=&quot;header</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>TLS攻击之心脏滴血</title>
