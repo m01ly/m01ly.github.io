@@ -2,14 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://m01ly.github.io/2020/08/26/hexo-guide/</loc>
+    <loc>https://m01ly.github.io/2020/09/04/pt-info-collection/</loc>
     
     <lastmod>2020-09-04</lastmod>
     
   </url>
   
   <url>
-    <loc>https://m01ly.github.io/2020/09/04/info-collection/</loc>
+    <loc>https://m01ly.github.io/2020/09/04/pt-portinfo/</loc>
+    
+    <lastmod>2020-09-04</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://m01ly.github.io/2020/08/26/hexo-guide/</loc>
     
     <lastmod>2020-09-04</lastmod>
     
@@ -130,6 +137,13 @@
   </url>
   
 
+  
+  <url>
+    <loc>https://m01ly.github.io/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/</loc>
+    <lastmod>2020-09-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
   
   <url>
     <loc>https://m01ly.github.io/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</loc>
