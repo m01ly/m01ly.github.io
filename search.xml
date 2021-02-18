@@ -4,19 +4,6 @@
   
     
     <entry>
-      <title></title>
-      <link href="/2020/11/11/adb/"/>
-      <url>/2020/11/11/adb/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>adb</p><p>1 连接手机 </p><p>使用豌豆荚 连接成功后</p><p>2 使用adb </p><p>（1）首先先用usb线连bai接android手机，然du后输入指令：adb tcpip，端口号默认为5555。</p><p><img src="/2020/11/11/adb/1600755139261.png" alt="1600755139261"></p><p>（2）设置端口号后，然后查dao看设置中手机的ip地址。</p><p>（3）通过adb连接ip地址adb connect ip地址。</p><p><img src="/2020/11/11/adb/1600755148814.png" alt="1600755148814"></p><p>（4）</p><p><img src="/2020/11/11/adb/1600755166600.png" alt="1600755166600"></p><p><img src="/2020/11/11/adb/1600757424168.png" alt="1600757424168"></p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>分组密码--填充模式</title>
       <link href="/2020/08/31/blockcipher-padding/"/>
       <url>/2020/08/31/blockcipher-padding/</url>
